@@ -10,33 +10,20 @@
 List<double> FindAverage(int[,] arrey)
 {
     List<double> dynamicArrey = new List<double>();
-    double averegeCollum = 0;
-    double sum = 0;
-    int j = 0;
-    int count = 0;
-    for (int i = 0; i < arrey.GetLength(0); i++)
+    for (int j = 0; j < arrey.GetLength(1); j++)
     {
-        for (; j < arrey.GetLength(1); j++)
+        double sum = 0;
+        for (int i = 0; i < arrey.GetLength(0); i++)
         {
             sum += arrey[i, j];
-            break;
         }
-        if (i == arrey.GetLength(0) - 1)
-        {
-            count++;
-            averegeCollum = sum / arrey.GetLength(0);
-            dynamicArrey.Add(Math.Round(averegeCollum, 2));
-            i = -1;
-            j++;
-            sum = 0;
+        double averege = sum / arrey.GetLength(0);
+        dynamicArrey.Add(Math.Round(averege, 2));
         }
-        if (count == arrey.GetLength(1))
-        {
-            break;
-        }
-    }
     return dynamicArrey;
 }
+    
+
 
 int[,] Generate2DArray(int rows, int collums, int startValue, int finishValue)
 {
@@ -97,4 +84,4 @@ Print2DArray(twoDemensionArrey);
 Console.WriteLine("");
 
 List<double> arrey = FindAverage(twoDemensionArrey);
-Console.Write($"Среднее арифметическое каждого столбца: {String.Join("; ", arrey)}]");
+Console.Write($"Среднее арифметическое каждого столбца: {String.Join("; ", arrey)}.");
